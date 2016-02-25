@@ -1,0 +1,6 @@
+git-pull:
+  image: indiehosters/git
+  volumes:
+    - /data/domains:/domains
+    - ./entrypoint.sh:/entrypoint.sh
+  command: /entrypoint.sh
