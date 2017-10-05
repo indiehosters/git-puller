@@ -7,11 +7,7 @@ git-pull:
     bash -c 'bash -euxs <<EOF
     trap "break;exit" SIGHUP SIGINT SIGTERM
     while /bin/true; do
-      for directory in `cat /list`
-      do
-        cd $directory
-        git pull
-      done
+      cat list | xargs -i sh -c \'cd {} && git pull\'
       sleep 100
     done
     EOF'
