@@ -5,4 +5,6 @@ while /bin/true; do
   do
     cd $dir
     git pull
+  done
+  sleep 100
 done
