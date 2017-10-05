@@ -1,6 +1,17 @@
 git-pull:
   image: indiehosters/git
   volumes:
-    - /data/domains:/domains
-    - ./entrypoint.sh:/entrypoint.sh
-  command: /entrypoint.sh
+  - /data/domains:/domains
+  - ./list:/list
+  entrypoint: |
+    bash -c 'bash -s <<EOF
+    trap "break;exit" SIGHUP SIGINT SIGTERM
+    while /bin/true; do
+      for directory in `cat /list`
+      do
+        cd $directory
+        git pull
+      done
+      sleep 100
+    done
+    EOF'
