@@ -1,7 +1,7 @@
 git-pull:
   image: indiehosters/git
   volumes:
-  - /data/domains:/domains
+  - /data/domains:/data/domains
   - ./list:/list
   entrypoint: |
     bash -c 'bash -s <<EOF
