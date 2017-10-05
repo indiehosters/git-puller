@@ -3,4 +3,5 @@ git-pull:
   volumes:
   - /data/domains:/data/domains
   - ./list:/list
+  - ./entrypoint.sh:/entrypoint.sh
   entrypoint: /entrypoint.sh
